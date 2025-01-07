@@ -16,7 +16,7 @@ jobs:
   Docker-build-with-evidence:
     runs-on: ubuntu-latest
     env:
-      REPO_NAME: yalinarie-dev-virtual
+      REPO_NAME: yalinarie-dev-local
     steps:
 
       - uses: actions/checkout@v4
