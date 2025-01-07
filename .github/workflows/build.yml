@@ -1,4 +1,4 @@
-name: Docker-build-with-evidence
+name: Docker-build-with-evidence_ya
 
 on:
   [workflow_dispatch]
@@ -11,7 +11,7 @@ jobs:
   Docker-build-with-evidence:
     runs-on: ubuntu-latest
     env:
-      REPO_NAME: evidence-demo-docker-dev
+      REPO_NAME: yalinarie-dev-virtual
     steps:
 
       - uses: actions/checkout@v4
