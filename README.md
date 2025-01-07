@@ -59,7 +59,7 @@ For more information related to OPA (Open Policy Agent) see the following resour
 
 In this step you will configure your environment to be able to run the evidence github workflow we will be using throughout the training
 
-1. Fork the evidence-enablement repository.
+1. Fork the evidence-training repository.
 2. Add your name as a prefix to the build name, in the build.yml file.
 3. Update the REPO_NAME variable in th build.yml workflow file to the OCI dev repository you have created.
 4. Add the following github actions variables/secrets:
