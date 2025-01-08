@@ -44,7 +44,9 @@ jobs:
       - name: Promote to Test
         run: |
           if [ "${{ env.RESULT }}" == "true" ]; then
-            jf release-bundle-promote ${{ github.actor }}-evidence-training ${{ inputs.rb-version }} QA --signing-key ${{ secrets.RB_KEY }} --sync=true --input-repos "yalinarie-qa-local"
+            #jf release-bundle-promote ${{ github.actor }}-evidence-training ${{ inputs.rb-version }} QA --signing-key ${{ secrets.RB_KEY }} --sync=true --input-repos "yalinarie-qa-local"
+            jf release-bundle-promote "${{ github.actor }}-evidence-training" "${{ inputs.rb-version }}" "QA" \
+             --signing-key "${{ secrets.RB_KEY }}" --sync=true --include-repos "yalinarie-qa-local"
 
 
             echo "🚀 Succesfully promoted to \`QA\` environemnt" >> $GITHUB_STEP_SUMMARY
