@@ -36,7 +36,7 @@ jobs:
 
       - name: Evidence on docker
         run: |
-          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign.json # this is collect the json infor of the user 
+          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign.json # this is collect the json info of the user 
           jf evd create --package-name example-go-app --package-version ${{ github.run_number }} --package-repo-name ${REPO_NAME} \
           --key "${{ secrets.PRIVATE_KEY }}" --key-alias ${{ secrets.KEY_ALIAS }} \
           --predicate ./sign.json --predicate-type https://jfrog.com/evidence/signature/v1 
@@ -52,9 +52,9 @@ jobs:
       - name: Publish build info
         run: jfrog rt build-publish
         
-      - name: Sign build evidence
+      - name: Sign build evidence 
         run: |
-          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign.json
+          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign.json # this is collect the build info of the user 
           jf evd create --build-name ${{ github.workflow }} --build-number ${{ github.run_number }} \
             --predicate ./sign.json --predicate-type https://jfrog.com/evidence/build-signature/v1 \
             --key "${{ secrets.PRIVATE_KEY }}"  --key-alias ${{ secrets.KEY_ALIAS }}
