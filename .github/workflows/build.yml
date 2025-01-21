@@ -51,6 +51,10 @@ jobs:
 
       - name: Publish build info
         run: jfrog rt build-publish
+
+      - name: Scan Build
+        run: | 
+          jf build-scan Docker-build-with-Docker-build-with-evidence_ya --fail=false --vuln --format table --rescan
         
       - name: Sign build evidence 
         run: |
