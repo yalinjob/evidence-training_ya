@@ -33,6 +33,9 @@ jobs:
           REPO_URL=${URL}/${REPO_NAME}
           docker build -t ${REPO_URL}/example-go-app:${{ github.run_number }} .
           jf docker push ${REPO_URL}/example-go-app:${{ github.run_number }}
+          jf docker scan ${REPO_URL}/example-go-app:${{ github.run_number }}
+          
+          
 
       - name: Evidence on docker
         run: |
@@ -62,9 +65,16 @@ jobs:
             --key "${{ secrets.PRIVATE_KEY }}"  --key-alias ${{ secrets.KEY_ALIAS }}
           echo '🔎 Evidence attached: `build-signature` 🔏 ' >> $GITHUB_STEP_SUMMARY
 
-      - name: Scan Build
+
+
+          
+      - name: Security Audit
         run: | 
-          jf build-scan Docker-build-with-evidence_ya $GITHUB_RUN_NUMBER --fail=false --vuln --format table --rescan 
+          jf audit
+
+   #   - name: Scan Build
+   #     run: | 
+   #       jf build-scan Docker-build-with-evidence_ya $GITHUB_RUN_NUMBER --fail=false --vuln --format table --rescan 
 
       - name: Create release bundle
         run: |
