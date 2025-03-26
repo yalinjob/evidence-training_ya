@@ -74,9 +74,9 @@ jobs:
         run: | 
           jf audit
 
-   #   - name: Scan Build
-   #     run: | 
-   #       jf build-scan Docker-build-with-evidence_ya $GITHUB_RUN_NUMBER --fail=false --vuln --format table --rescan 
+      - name: Scan Build
+        run: | 
+          jf build-scan 
 
       - name: Create release bundle
         run: |
